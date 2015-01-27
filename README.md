@@ -1,0 +1,90 @@
+# virtual_dom
+
+A Dart wrapper for Matt Esch's [virtual-dom] JavaScript library. It provides methods for applying diffs to DOM elements in a functional way.
+
+My intention is to build upon this and apply diffs in reactive way using FRP. Take a look at the [counter example] to get an idea of the direction this might go.
+
+## Usage
+
+A example usage example:
+
+```dart
+import 'dart:async';
+import 'dart:html';
+import 'package:virtual_dom/virtual_dom.dart' as vdom;
+
+main() {
+  var tree = buildTree(0);
+  var element = vdom.createElement(tree);
+  document.body.append(element);
+
+  var tick = new Stream.periodic(new Duration(seconds: 1), (i) => i + 1);
+  tick.listen((count) {
+    var newTree = buildTree(1);
+    var patch = vdom.diff(tree, newTree);
+    vdom.patch(element, newTree);
+
+    tree = newTree;
+  });
+}
+
+vdom.VTree buildTree(int count) {
+  return vdom.node("div", children: [vdom.text(count.toString())]);
+}
+```
+
+This library requires that you import the JavaScript binding in your HTML.
+
+```html
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script async src="packages/virtual_dom/virtual_dom.js"></script>
+  <script async src="packages/browser/dart.js"></script>
+  <script async type="application/dart" src="index.dart"></script>
+</head>
+<body>
+
+</body>
+</html>
+```
+
+## API
+
+### `Element createElement(VTree tree)`
+
+Creates a DOM element for the given virtual DOM tree.
+
+### `PatchObject diff(VTree previous, VTree next)`
+
+Creates a set of DOM patches that represent the differences between two `VTree`s.
+
+### `Element patch(Element node, PatchObject patches)`
+
+Applies a set of patches to the given DOM node.
+
+### `VTree node(String nodeName, {Map<String, String> properties, List<VTree> children})`
+
+Creates a new virtual DOM tree for the given `nodeName`.
+
+Example:
+
+```dart
+var tree = node("div", properties: {"class": "my-div"}, children: [text("Hello")]);
+```
+
+### `VTree text(String text)`
+
+Creates a new virtual DOM text node that contains `text`.
+
+## Building
+
+* Make sure you have Node, NPM and Browserify installed.
+* Run `npm install`
+* Run: `browserify lib/wrapper.js -o lib/virtual_dom.js`
+
+[virtual-dom]: https://github.com/Matt-Esch/virtual-dom
+[counter example]: https://github.com/danschultz/virtual_dom/examples/counter

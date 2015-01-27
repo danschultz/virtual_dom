@@ -1,0 +1,11 @@
+name: virtual_dom
+description: >
+  A set of methods for applying diffs to DOM elements in a declarative way.
+version: 0.0.1
+author: Dan Schultz <schultz.t.dan@gmail.com>
+homepage: https://github.com/danschultz/virtual_dom/
+dependencies:
+  browser: any
+  stream_transformers: any
+dev_dependencies:
+  unittest: any
