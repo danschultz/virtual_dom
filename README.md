@@ -87,4 +87,4 @@ Creates a new virtual DOM text node that contains `text`.
 * Run: `browserify lib/wrapper.js -o lib/virtual_dom.js`
 
 [virtual-dom]: https://github.com/Matt-Esch/virtual-dom
-[counter example]: https://github.com/danschultz/virtual_dom/examples/counter
+[counter example]: https://github.com/danschultz/virtual_dom/tree/master/example/counter
