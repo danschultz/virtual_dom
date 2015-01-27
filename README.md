@@ -54,19 +54,37 @@ This library requires that you import the JavaScript binding in your HTML.
 
 ## API
 
-### `Element createElement(VTree tree)`
+### Element creation
+
+```dart
+Element createElement(VTree tree)
+```
 
 Creates a DOM element for the given virtual DOM tree.
 
-### `PatchObject diff(VTree previous, VTree next)`
+### Diffing
+
+```dart
+PatchObject diff(VTree previous, VTree next)
+```
 
 Creates a set of DOM patches that represent the differences between two `VTree`s.
 
-### `Element patch(Element node, PatchObject patches)`
+### Patching
+
+```dart
+Element patch(Element node, PatchObject patches)
+```
 
 Applies a set of patches to the given DOM node.
 
-### `VTree node(String nodeName, {Map<String, String> properties, List<VTree> children})`
+### Virtual DOM trees
+
+#### Elements
+
+```dart
+VTree node(String nodeName, {Map<String, String> properties, List<VTree> children})
+```
 
 Creates a new virtual DOM tree for the given `nodeName`.
 
@@ -76,7 +94,11 @@ Example:
 var tree = node("div", properties: {"class": "my-div"}, children: [text("Hello")]);
 ```
 
-### `VTree text(String text)`
+#### Text
+
+```dart
+VTree text(String text)
+```
 
 Creates a new virtual DOM text node that contains `text`.
 
