@@ -1,6 +1,6 @@
 # Counter Example
 
-An example that takes a single stream of inputs, transforms them into a virtual DOM tree, and renders their diffs to the DOM.
+An example that takes a single stream of inputs, transforms them into a virtual DOM tree, and applies their diffs to a DOM node.
 
 In a more interesting app, the stream of inputs would be a combination of mouse, keyboard, system and network events.
 
