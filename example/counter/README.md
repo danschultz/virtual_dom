@@ -13,6 +13,10 @@ void main() {
 
   render(trees);
 }
+
+vdom.VTree buildTree(int count) {
+  return vdom.node("div", children: [vdom.text(count.toString())]);
+}
 ```
 
 ## Running
