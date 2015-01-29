@@ -2,7 +2,7 @@
 
 A Dart wrapper for Matt Esch's [virtual-dom] JavaScript library. It provides methods for declaratively creating and applying diffs to the DOM.
 
-My intention is to build upon this and apply diffs in reactively using FRP. Take a look at the [counter example] to get an idea of the direction this might go.
+My intention is to build upon this and apply diffs reactively using FRP. Take a look at the [counter example] to get an idea of the direction this might go.
 
 ## Usage
 
