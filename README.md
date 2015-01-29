@@ -1,8 +1,8 @@
 # virtual_dom
 
-A Dart wrapper for Matt Esch's [virtual-dom] JavaScript library. It provides methods for applying diffs to DOM elements in a functional way.
+A Dart wrapper for Matt Esch's [virtual-dom] JavaScript library. It provides methods for declaratively creating and applying diffs to the DOM.
 
-My intention is to build upon this and apply diffs in reactive way using FRP. Take a look at the [counter example] to get an idea of the direction this might go.
+My intention is to build upon this and apply diffs in reactively using FRP. Take a look at the [counter example] to get an idea of the direction this might go.
 
 ## Usage
 
@@ -20,7 +20,7 @@ main() {
 
   var tick = new Stream.periodic(new Duration(seconds: 1), (i) => i + 1);
   tick.listen((count) {
-    var newTree = buildTree(1);
+    var newTree = buildTree(count);
     var patch = vdom.diff(tree, newTree);
     vdom.patch(element, newTree);
 
