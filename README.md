@@ -22,7 +22,7 @@ main() {
   tick.listen((count) {
     var newTree = buildTree(count);
     var patch = vdom.diff(tree, newTree);
-    vdom.patch(element, newTree);
+    vdom.patch(element, patch);
 
     tree = newTree;
   });
